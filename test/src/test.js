@@ -2,7 +2,6 @@ import 'source-map-support/register';
 import assert     from 'power-assert';
 import * as babel from 'babel-core';
 import espurify   from 'espurify';
-import Fs         from 'fs';
 import root       from 'rootrequire';
 
 function dump ({ code, ast }) {
