@@ -23,7 +23,6 @@ describe('plugin', () => {
 
         // dump(output);
 
-        let { inspect } = require('util');
         let got = espurify(output.ast.program);
         let want = require(`${root}/test/fixtures/expected.json`);
 
