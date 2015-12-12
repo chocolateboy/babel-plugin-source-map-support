@@ -3,7 +3,7 @@
 [![npm status](http://img.shields.io/npm/v/babel-plugin-source-map-support.svg)](https://www.npmjs.org/package/babel-plugin-source-map-support)
 [![build status](https://secure.travis-ci.org/chocolateboy/babel-plugin-source-map-support.svg)](http://travis-ci.org/chocolateboy/babel-plugin-source-map-support)
 
-A babel plugin which automatically enables source-map support for v8 stack traces.
+A Babel plugin which automatically makes stack traces source-map aware
 
 - [INSTALL](#install)
 - [SYNOPSIS](#synopsis)
@@ -62,10 +62,22 @@ which prepends a statement equivalent to the following to source files:
 require('source-map-support/register');
 ```
 
-Note: this module doesn't install the [source-map-support](https://www.npmjs.com/package/source-map-support)
-module. That should be installed separately:
+In conjunction with the [source-map-support](https://www.npmjs.com/package/source-map-support)
+module, which must be installed separately, this statement hooks into the v8 stack trace API to
+translate call sites in the transpiled code back to their corresponding locations in
+the original code.
 
-    npm install source-map-support --save
+Note: this only works in environments which support the v8 stack trace API (e.g. Node.js and Chrome),
+though it is harmless in other environments.
+
+The source-map-support module only needs to be registered in the top-level file of an application,
+but it no-ops if it has already been loaded, so there is no harm in registering it in every file.
+
+### CAVEATS
+
+Source maps must currently be inline. While the source-map-support module provides a way
+to associate a file with an external source map, that is not currently supported by
+this plugin.
 
 ## SEE ALSO
 

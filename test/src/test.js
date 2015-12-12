@@ -1,30 +1,33 @@
-import 'source-map-support/register';
-import assert     from 'power-assert';
-import * as babel from 'babel-core';
-import espurify   from 'espurify';
-import root       from 'rootrequire';
+import 'source-map-support/register'
+import assert                from 'power-assert'
+import espurify              from 'espurify'
+import Path                  from 'path'
+import { transformFileSync } from 'babel-core'
+
+// XXX rootrequire (amongst others) doesn't work with nom
+const root = Path.resolve(__dirname, '../../..')
 
 function dump ({ code, ast }) {
-    console.log(code);
-    console.log(require('util').inspect(espurify(ast.program), { depth: null }));
+    console.log(code)
+    console.log(JSON.stringify(espurify(ast.program), null, 4))
 }
 
-let pluginPath = `${root}/target/src/plugin.js`;
+let pluginPath = `${root}/target/src/plugin.js`
 
 describe('plugin', () => {
     it('prepends a require', () => {
-        let fixture = `${root}/test/fixtures/actual.js`;
-        let output = babel.transformFileSync(fixture, {
-            optional: [ 'runtime', 'strict' ],
-            plugins: [ pluginPath ],
-            blacklist: [ 'es6.modules' ],
-        });
+        let fixture = `${root}/test/fixtures/actual.js`
 
-        // dump(output);
+        let output = transformFileSync(fixture, {
+            blacklist: [ 'es6.modules', 'strict' ],
+            plugins: [ pluginPath ]
+        })
 
-        let got = espurify(output.ast.program);
-        let want = require(`${root}/test/fixtures/expected.json`);
+        // dump(output)
 
-        assert.deepEqual(got, want);
-    });
-});
+        let got = espurify(output.ast.program)
+        let want = require(`${root}/test/fixtures/expected.json`)
+
+        assert.deepEqual(got, want)
+    })
+})
