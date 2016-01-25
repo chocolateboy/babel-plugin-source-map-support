@@ -1,45 +1,36 @@
-import 'source-map-support/register';
-
-/*
- * return the AST for this statement:
+/**
+ * add `import { install as _sourceMapSupport } from 'source-map-support';`
+ * then call `_sourceMapSupport();`
  *
- *     _sourceMapSupportRegister.install({ handleUncaughtException: true })
+ * it equivalents to call `require('source-map-support/register');`,
+ * but babel 6 `addImport` doesn't support it.
+ *
+ * @param t
+ * @returns {{visitor: {Program: (function(*, *))}}}
  */
-function handleUncaughtExceptionNode(t, id) {
-    return t.expressionStatement(
-        t.callExpression(
-            t.memberExpression(
-                id,
-                t.identifier('install')
-            ), [
-                t.objectExpression([
-                    t.property(
-                        'init',
-                        t.identifier('handleUncaughtException'),
-                        t.literal(true)
-                    )
-                ])
-            ]
-        )
-    );
-}
 
-export default function ({ Plugin, types: t }) {
-    return new Plugin('source-map-support', {
+export default ({types: t}) => {
+
+    return {
         visitor: {
-            Program (node, parent, scope, file) {
-                let id = file.addImport(
-                    'source-map-support/register',
-                    null,
-                    'absolute'
+            Program (path, {file}) {
+                let id;
+
+                id = file.addImport(
+                    'source-map-support',
+                    'install',
+                    '_sourceMapSupport'
                 );
 
-                // TODO when babel adds support for plugin options
-                // https://github.com/babel/babel/issues/1833
-                //
-                // let ast = handleUncaughtExceptionNode(t, id);
-                // this.unshiftContainer('body', ast);
+                path.traverse({
+                    ImportDeclaration(path) {
+
+                        if (path.node.source.value === 'source-map-support') {
+                            path.insertAfter(t.ExpressionStatement(t.CallExpression(t.identifier('_sourceMapSupport'), [])));
+                        }
+                    }
+                });
             }
         }
-    });
-}
+    };
+};
