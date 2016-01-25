@@ -1,49 +1,112 @@
 {
+    "type": "Program",
     "body": [
         {
-            "source": {
-                "type": "Literal",
-                "value": "foo"
-            },
+            "type": "ImportDeclaration",
             "specifiers": [
                 {
-                    "local": {
-                        "name": "foo",
-                        "type": "Identifier"
+                    "type": "ImportSpecifier",
+                    "imported": {
+                        "type": "Identifier",
+                        "name": "install"
                     },
-                    "type": "ImportDefaultSpecifier"
+                    "local": {
+                        "type": "Identifier",
+                        "name": "_sourceMapSupport"
+                    }
                 }
             ],
-            "type": "ImportDeclaration"
-        },
-        {
             "source": {
-                "type": "Literal",
-                "value": "bar"
-            },
-            "specifiers": [
-                {
-                    "local": {
-                        "name": "bar",
-                        "type": "Identifier"
-                    },
-                    "type": "ImportDefaultSpecifier"
-                }
-            ],
-            "type": "ImportDeclaration"
+                "type": "StringLiteral",
+                "value": "source-map-support"
+            }
         },
         {
+            "type": "ExpressionStatement",
             "expression": {
-                "arguments": [],
+                "type": "CallExpression",
                 "callee": {
-                    "name": "test",
-                    "type": "Identifier"
+                    "type": "Identifier",
+                    "name": "_sourceMapSupport"
                 },
-                "type": "CallExpression"
-            },
-            "type": "ExpressionStatement"
+                "arguments": [ ]
+            }
+        },
+        {
+            "type": "ImportDeclaration",
+            "specifiers": [
+                {
+                    "type": "ImportDefaultSpecifier",
+                    "local": {
+                        "type": "Identifier",
+                        "name": "foo"
+                    }
+                }
+            ],
+            "source": {
+                "type": "StringLiteral",
+                "start": 16,
+                "end": 21,
+                "loc": {
+                    "start": {
+                        "line": 1,
+                        "column": 16
+                    },
+                    "end": {
+                        "line": 1,
+                        "column": 21
+                    }
+                },
+                "extra": {
+                    "rawValue": "foo",
+                    "raw": "'foo'"
+                },
+                "value": "foo"
+            }
+        },
+        {
+            "type": "ImportDeclaration",
+            "specifiers": [
+                {
+                    "type": "ImportDefaultSpecifier",
+                    "local": {
+                        "type": "Identifier",
+                        "name": "bar"
+                    }
+                }
+            ],
+            "source": {
+                "type": "StringLiteral",
+                "start": 39,
+                "end": 44,
+                "loc": {
+                    "start": {
+                        "line": 2,
+                        "column": 16
+                    },
+                    "end": {
+                        "line": 2,
+                        "column": 21
+                    }
+                },
+                "extra": {
+                    "rawValue": "bar",
+                    "raw": "'bar'"
+                },
+                "value": "bar"
+            }
+        },
+        {
+            "type": "ExpressionStatement",
+            "expression": {
+                "type": "CallExpression",
+                "callee": {
+                    "type": "Identifier",
+                    "name": "test"
+                },
+                "arguments": [ ]
+            }
         }
     ],
-    "sourceType": "module",
-    "type": "Program"
+    "sourceType": "module"
 }

@@ -7,9 +7,7 @@ module.exports = function (grunt) {
         babel: {
             options: {
                 sourceMaps: 'inline',
-                nonStandard: false,
-                optional: [ 'strict' ],
-                stage: 0,
+                presets: ['babel-preset-es2015']
             },
             src: {
                 expand: true,
