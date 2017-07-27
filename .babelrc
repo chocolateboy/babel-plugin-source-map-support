@@ -14,7 +14,7 @@
             useBuiltIns: true,
             debug: false,
 
-            targets: { 'node': 4 }, // same as Babel 7.x and babel-plugin-lodash
+            targets: { 'node': 4 },
             loose: false,
         }],
     ],
