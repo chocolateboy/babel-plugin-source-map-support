@@ -9,7 +9,7 @@
   - [CAVEATS](#caveats)
 - [DEVELOPMENT](#development)
   - [NPM Scripts](#npm-scripts)
-  - [Gulp tasks](#gulp-tasks)
+  - [Gulp Tasks](#gulp-tasks)
 - [SEE ALSO](#see-also)
 - [VERSION](#version)
 - [AUTHOR](#author)
@@ -78,7 +78,7 @@ The following NPM scripts are available:
 * test - compile the plugin and run the test suite
 * test:debug - compile the plugin and run the test suite in debug mode (which dumps each transformed test case)
 
-## Gulp tasks
+## Gulp Tasks
 
 The following Gulp tasks are available:
 
