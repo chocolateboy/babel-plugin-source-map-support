@@ -1,0 +1,21 @@
+// vim:ft=javascript
+{
+    sourceMaps: 'inline',
+
+    presets: [
+        ['env', {
+
+            /*
+             * add polyfills for Object.assign, Promise &c. to bring the supported
+             * target up to ES2015 compatibility.
+             *
+             * set debug to true to see what's added.
+             */
+            useBuiltIns: true,
+            debug: false,
+
+            targets: { 'node': 4 }, // same as Babel 7.x and babel-plugin-lodash
+            loose: false,
+        }],
+    ],
+}

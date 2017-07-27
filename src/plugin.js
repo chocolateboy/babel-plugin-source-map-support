@@ -1,36 +1,81 @@
 /**
- * add `import { install as _sourceMapSupport } from 'source-map-support';`
- * then call `_sourceMapSupport();`
+ * prepend:
  *
- * it equivalents to call `require('source-map-support/register');`,
- * but babel 6 `addImport` doesn't support it.
+ *     import 'source-map-support/register';
  *
- * @param t
- * @returns {{visitor: {Program: (function(*, *))}}}
+ * to files this plugin is used on.
  */
 
-export default ({types: t}) => {
+import isMatch from 'lodash.ismatch'
 
+const MODULE = 'source-map-support/register'
+
+/*
+ * XXX Babel doesn't currently provide a way to add import statements with no
+ * specifiers [1], so we have to work around that by first creating an import
+ * statement with a dummy specifier and then removing the specifier. this
+ * works as long as we can always distinguish our import statements from import
+ * statements supplied by the user.
+ *
+ * we could do this by passing a dummy identifier to `addImport` and then
+ * looking for the exact node it returns in the AST e.g.:
+ *
+ *     let localIdentifier
+ *
+ *     Program (path, { file }) {
+ *         localIdentifier = file.addImport(
+ *             'source-map-support/register',
+ *             'dummy'
+ *         )
+ *     }
+ *
+ *     ImportDeclaration (path) {
+ *         if (path.node.local === localIdentifier) { ... }
+ *     }
+ *
+ * but it's potentially fragile (e.g. if nodes are cloned or replaced), so
+ * instead we pass an empty string as the identifier name; this
+ * creates an import statement with an empty `imported` identifier e.g.:
+ *
+ *     import { <empty string> as whatever } from 'source-map-support/register';
+ *
+ * i.e.:
+ *
+ *     import { as whatever } from 'source-map-support/register';
+ *
+ * these nodes can be created by `addImport` but are otherwise invalid (Babel
+ * can't print them and Babylon can't parse them) so they can't conflict with
+ * anything created by the user
+ *
+ * [1] https://github.com/babel/babel/issues/6021
+ */
+
+const DUMMY_SPECIFIER = {
+    type: 'ImportSpecifier',
+    imported: {
+        type: 'Identifier',
+        name: ''
+    }
+}
+
+export default function babelPluginSourceMapSupport () {
     return {
         visitor: {
-            Program (path, {file}) {
-                let id;
+            Program (path, { file }) {
+                file.addImport(MODULE, '')
+            },
 
-                id = file.addImport(
-                    'source-map-support',
-                    'install',
-                    '_sourceMapSupport'
-                );
+            ImportDeclaration (path) {
+                const { source, specifiers } = path.node
 
-                path.traverse({
-                    ImportDeclaration(path) {
-
-                        if (path.node.source.value === 'source-map-support') {
-                            path.insertAfter(t.ExpressionStatement(t.CallExpression(t.identifier('_sourceMapSupport'), [])));
-                        }
-                    }
-                });
+                if (
+                       (source.value === MODULE)
+                    && (specifiers.length === 1)
+                    && (isMatch(specifiers[0], DUMMY_SPECIFIER))
+                ) {
+                    specifiers.length = 0
+                }
             }
         }
-    };
-};
+    }
+}

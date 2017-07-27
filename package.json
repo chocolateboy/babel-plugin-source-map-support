@@ -1,36 +1,35 @@
 {
   "name": "babel-plugin-source-map-support",
-  "version": "0.0.2",
+  "version": "1.0.0",
   "description": "A Babel plugin which automatically makes stack traces source-map aware",
   "repository": "chocolateboy/babel-plugin-source-map-support",
   "license": "Artistic-2.0",
-  "main": "target/src/plugin.js",
+  "main": "dist/plugin.js",
   "files": [
     "package.json",
     "CHANGELOG.md",
     "README.md",
-    "target/src/plugin.js"
+    "dist/plugin.js"
   ],
+  "scripts": {
+    "build": "gulp build",
+    "test:debug": "cross-env NODE_ENV=development npm run test",
+    "test": "gulp build && ava --verbose test/*.js"
+  },
   "dependencies": {
     "babel-core": "^6.4.5",
-    "babel-runtime": "^6.3.19"
+    "lodash.ismatch": "^4.4.0"
   },
   "devDependencies": {
-    "babel-plugin-espower": "~2.1.0",
-    "babel-preset-es2015": "~6.3.13",
-    "espurify": "^1.3.0",
-    "grunt": "^0.4.5",
+    "ava": "^0.21.0",
+    "babel-preset-env": "^1.6.0",
+    "cross-env": "^5.0.1",
+    "del": "^3.0.0",
+    "globby": "^6.1.0",
     "grunt-babel": "^6.0.0",
-    "grunt-cli": "^0.1.13",
-    "grunt-contrib-clean": "^0.6.0",
-    "grunt-mocha-test": "^0.12.7",
-    "load-grunt-tasks": "^3.3.0",
-    "mocha": "^2.3.4",
-    "power-assert": "^1.2.0",
-    "source-map-support": "~0.4.0"
-  },
-  "scripts": {
-    "test": "grunt test"
+    "gulp": "gulpjs/gulp.git#4.0",
+    "gulp-babel": "^6.1.2",
+    "root-path": "^0.2.0"
   },
   "keywords": [
     "babel-plugin",
