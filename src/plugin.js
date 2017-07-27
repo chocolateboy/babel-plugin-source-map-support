@@ -43,9 +43,9 @@ const MODULE = 'source-map-support/register'
  *
  *     import { as whatever } from 'source-map-support/register';
  *
- * these nodes can be created by `addImport` but are otherwise invalid (Babel
- * can't print them and Babylon can't parse them) so they can't conflict with
- * anything created by the user
+ * these nodes can be created by `addImport` but are otherwise invalid (the
+ * rendered statements are syntactically invalid and Babylon can't parse them)
+ * so they can't conflict with anything created by the user
  *
  * [1] https://github.com/babel/babel/issues/6021
  */
