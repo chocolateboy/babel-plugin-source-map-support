@@ -5,8 +5,6 @@ import glob                  from 'globby'
 import Path                  from 'path'
 import root                  from 'root-path'
 
-let pluginPath = root('dist/plugin.js')
-
 function dump ({ code }, testName) {
     if (process.env.NODE_ENV === 'development') {
         console.warn('%s:\n<<%s>>', testName, code)
@@ -15,6 +13,7 @@ function dump ({ code }, testName) {
     return code
 }
 
+const pluginPath = root('dist/plugin.js')
 const testDirs = glob.sync(root('test/fixtures/*'))
 
 for (const testDir of testDirs) {

@@ -76,7 +76,7 @@ The following NPM scripts are available:
 
 * build - compile the plugin and save it to the target directory
 * test - compile the plugin and run the test suite
-* test:build - compile the plugin and run the test suite in debug mode (which dumps each transformed test case)
+* test:debug - compile the plugin and run the test suite in debug mode (which dumps each transformed test case)
 
 ## Gulp tasks
 
