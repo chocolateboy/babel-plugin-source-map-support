@@ -1,3 +1,9 @@
+## 2.0.0 - TBC
+
+* **breaking change**:
+  * add support for Babel >= 7.x
+  * remove support for Babel 6.x
+
 ## 1.0.0 - 2017-07-27 14:42:25
 
 * **breaking change**:

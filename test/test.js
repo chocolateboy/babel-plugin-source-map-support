@@ -13,8 +13,8 @@ function dump ({ code }, testName) {
     return code
 }
 
-const pluginPath = root('dist/plugin.js')
-const testDirs = glob.sync(root('test/fixtures/*'))
+const pluginPath = root('dist/index.js')
+const testDirs = glob.sync(root('test/fixtures/*'), { onlyDirectories: true })
 
 for (const testDir of testDirs) {
     const inputPath = Path.resolve(testDir, 'input.js')
@@ -30,6 +30,6 @@ for (const testDir of testDirs) {
         const got = dump(output, testName)
         const want = Fs.readFileSync(outputPath, 'utf8')
 
-        t.deepEqual(got.trim(), want.trim())
+        t.is(got.trim(), want.trim())
     })
 }

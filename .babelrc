@@ -1,21 +1,20 @@
 // vim:ft=javascript
 {
-    sourceMaps: 'inline',
+    env: {
+        development: {
+            sourceMaps: 'inline',
+        }
+    },
 
     presets: [
-        ['env', {
+        ['@babel/preset-env', {
+            // only include polyfills if they're used
+            useBuiltIns: 'usage',
 
-            /*
-             * add polyfills for Object.assign, Promise &c. to bring the supported
-             * target up to ES2015 compatibility.
-             *
-             * set debug to true to see what's added.
-             */
-            useBuiltIns: true,
+            // set this to true to see the applied transforms and bundled polyfills
             debug: false,
 
-            targets: { 'node': 4 },
-            loose: false,
+            targets: { node: 4 }, // same as Babel 7
         }],
     ],
 }

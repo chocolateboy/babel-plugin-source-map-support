@@ -6,15 +6,15 @@
 #         eslint-plugin-import   \
 #         eslint-plugin-node     \
 #         eslint-plugin-promise
+#
+# (eslint-plugin-import, eslint-plugin-node, and eslint-plugin-promise
+# are peer dependencies of eslint-config-standard)
 
 env:
   browser: true
   commonjs: true
-  jasmine: true
   jquery: true
   node: true
-  phantomjs: true
-  protractor: true
 
 parser: babel-eslint
 
@@ -31,24 +31,19 @@ rules:
     - error
     - 4
 
-  # don't care either way about semi-colons
-  semi: 0
-
   # don't care if multiple vars are initialised with
   # a single statement
   one-var: 0
 
-  # only allow trailing commas in arrays and objects
-  # (i.e. avoid using/keeping them in function parameters,
-  # which aren't supported prior to ES7)
+  # only allow trailing commas in multi-line expressions
   comma-dangle:
     - error
     -
       arrays: only-multiline
       objects: only-multiline
+      functions: only-multiline
       imports: never
       exports: never
-      functions: never
 
   # prefer
   #
@@ -68,21 +63,9 @@ rules:
     -
       allowArrowFunctions: true
 
-  # prefer:
-  #
-  #     foo ?
-  #         bar :
-  #         baz
-  #
-  # over:
-  #
-  #     foo
-  #         ? bar
-  #         : baz
-  #
-  operator-linebreak:
-    - error
-    - after
+  # don't require operators to be consistently placed at the beginning/end
+  # of lines: it varies according to the lines
+  operator-linebreak: 0
 
   # prohibit multiple spaces unless they're used to align requires, imports,
   # or object literals

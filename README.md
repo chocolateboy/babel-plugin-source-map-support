@@ -29,7 +29,7 @@ A Babel plugin which automatically makes stack traces source-map aware
 import foo from 'foo';
 import bar from 'bar';
 
-test();
+foo(bar);
 ```
 
 `$ babel --plugins source-map-support test.js`
@@ -39,7 +39,7 @@ import 'source-map-support/register';
 import foo from 'foo';
 import bar from 'bar';
 
-test();
+foo(bar);
 ```
 
 # DESCRIPTION
@@ -62,6 +62,23 @@ though it's harmless in other environments.
 The source-map-support module only needs to be registered in the top-level file(s) of an application,
 but it no-ops if it has already been loaded, so there is no harm in registering it in every file.
 
+You probably don't want to use this plugin when compiling code for the web because you probably don't
+want to include inline source maps in minified code. An easy way to limit the plugin's use to
+development/test builds, is to use Babel's [`env` option](https://babeljs.io/docs/usage/babelrc/#env-option) e.g.:
+
+```javascript
+{
+    env: {
+        development: {
+            sourceMaps: 'inline',
+            plugins: ['source-map-support', ...]
+        }
+    },
+
+    presets: [ ... ]
+}
+```
+
 ## CAVEATS
 
 Source maps must currently be inline. While the source-map-support module provides a way
@@ -74,9 +91,9 @@ this plugin.
 
 The following NPM scripts are available:
 
-* build - compile the plugin and save it to the target directory
-* test - compile the plugin and run the test suite
-* test:debug - compile the plugin and run the test suite in debug mode (which dumps each transformed test case)
+* release - run the test script in production mode, which compiles the plugin for release
+* test - lint the codebase, compile the plugin, and run the test suite
+* test:debug - run the test script in debug mode, which dumps each transformed test case
 
 ## Gulp Tasks
 
@@ -84,17 +101,17 @@ The following Gulp tasks are available:
 
 * build - compile the plugin and save it to the target directory
 * clean - remove the target directory and its contents
-* default - alias for the `build` task
+* default - run the `clean`, `lint` and `build` tasks
+* lint - check and report style and usage errors in the gulpfile, source file(s) and test file(s)
 
 # SEE ALSO
 
 * [babel](https://www.npmjs.com/package/babel)
-* [babel-plugin-transform-es2015-modules-commonjs-simple](https://www.npmjs.com/package/babel-plugin-transform-es2015-modules-commonjs-simple)
 * [source-map-support](https://www.npmjs.com/package/source-map-support)
 
 # VERSION
 
-1.0.0
+2.0.0
 
 # AUTHOR
 
@@ -102,7 +119,7 @@ The following Gulp tasks are available:
 
 # COPYRIGHT AND LICENSE
 
-Copyright © 2015-2017 by chocolateboy
+Copyright © 2015-2018 by chocolateboy
 
 This module is free software; you can redistribute it and/or modify it under the
 terms of the [Artistic License 2.0](http://www.opensource.org/licenses/artistic-license-2.0.php).
