@@ -91,9 +91,9 @@ this plugin.
 
 The following NPM scripts are available:
 
-* release - run the test script in production mode, which compiles the plugin for release
+* release - run the `test` script in production mode, which compiles the plugin for release
 * test - lint the codebase, compile the plugin, and run the test suite
-* test:debug - run the test script in debug mode, which dumps each transformed test case
+* test:debug - run the `test` script in debug mode, which dumps each transformed test case
 
 ## Gulp Tasks
 

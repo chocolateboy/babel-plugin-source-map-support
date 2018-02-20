@@ -14,7 +14,7 @@ function dump ({ code }, testName) {
 }
 
 const pluginPath = root('dist/index.js')
-const testDirs = glob.sync(root('test/fixtures/*'), { onlyDirectories: true })
+const testDirs = glob.sync(root('test/fixtures/*/'))
 
 for (const testDir of testDirs) {
     const inputPath = Path.resolve(testDir, 'input.js')
