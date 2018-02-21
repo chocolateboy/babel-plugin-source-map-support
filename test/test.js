@@ -5,14 +5,7 @@ import glob                  from 'globby'
 import Path                  from 'path'
 import root                  from 'root-path'
 
-function dump ({ code }, testName) {
-    if (process.env.NODE_ENV === 'development') {
-        console.warn('%s:\n<<%s>>', testName, code)
-    }
-
-    return code
-}
-
+const isDev = process.env.NODE_ENV === 'development'
 const pluginPath = root('dist/index.js')
 const testDirs = glob.sync(root('test/fixtures/*/'))
 
@@ -22,12 +15,15 @@ for (const testDir of testDirs) {
     const testName = Path.basename(testDir)
 
     test(testName, t => {
-        const output = transformFileSync(inputPath, {
+        const { code: got } = transformFileSync(inputPath, {
             plugins: [pluginPath],
             babelrc: false,
         })
 
-        const got = dump(output, testName)
+        if (isDev) {
+            console.warn('%s:\n<<%s>>', testName, got)
+        }
+
         const want = Fs.readFileSync(outputPath, 'utf8')
 
         t.is(got.trim(), want.trim())

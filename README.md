@@ -8,8 +8,6 @@
 - [DESCRIPTION](#description)
   - [CAVEATS](#caveats)
 - [DEVELOPMENT](#development)
-  - [NPM Scripts](#npm-scripts)
-  - [Gulp Tasks](#gulp-tasks)
 - [SEE ALSO](#see-also)
 - [VERSION](#version)
 - [AUTHOR](#author)
@@ -19,8 +17,8 @@ A Babel plugin which automatically makes stack traces source-map aware
 
 # INSTALL
 
-    npm install source-map-support
-    npm install babel-plugin-source-map-support --save-dev
+    $ npm install source-map-support --save
+    $ npm install babel-plugin-source-map-support --save-dev
 
 # SYNOPSIS
 
@@ -64,7 +62,7 @@ The source-map-support module only needs to be registered in the top-level file(
 but it no-ops if it has already been loaded, so there is no harm in registering it in every file.
 
 You probably don't want to use this plugin when compiling code for the web because you probably don't
-want to include inline source maps in minified code. An easy way to limit the plugin's use to
+want to include inline source maps in minified code. An easy way to limit the plugin's scope to
 development/test builds is to use Babel's [`env` option](https://babeljs.io/docs/usage/babelrc/#env-option) e.g.:
 
 ```javascript
@@ -88,11 +86,13 @@ this plugin.
 
 # DEVELOPMENT
 
+<details>
+
 ## NPM Scripts
+
 
 The following NPM scripts are available:
 
-* release - run the `test` script in production mode, which compiles the plugin for release
 * test - lint the codebase, compile the plugin, and run the test suite
 * test:debug - run the `test` script in debug mode, which dumps each transformed test case
 
@@ -102,8 +102,11 @@ The following Gulp tasks are available:
 
 * build - compile the plugin and save it to the target directory
 * clean - remove the target directory and its contents
-* default - run the `clean`, `lint` and `build` tasks
+* default - run the `build` task
+* dump:config - print the build config settings to the console
 * lint - check and report style and usage errors in the gulpfile, source file(s) and test file(s)
+
+</details>
 
 # SEE ALSO
 
