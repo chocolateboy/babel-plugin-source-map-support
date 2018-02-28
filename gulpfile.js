@@ -15,7 +15,7 @@ const CONFIG = {
 
 const pkg = require('./package.json')
 const config = merge({}, CONFIG, pkg.config)
-const { paths } = config
+const paths = config.paths
 
 // compile the source and save the results to the target directory
 gulp.task('build', () => {
