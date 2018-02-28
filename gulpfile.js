@@ -44,4 +44,4 @@ gulp.task('lint', () => {
         .pipe(eslint.failAfterError()) // exit with an error code on lint errors
 })
 
-gulp.task('default', gulp.task('build'))
+gulp.task('default', gulp.series('lint', 'build'))

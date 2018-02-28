@@ -102,7 +102,7 @@ The following Gulp tasks are available:
 
 * build - compile the plugin and save it to the target directory
 * clean - remove the target directory and its contents
-* default - run the `build` task
+* default - run the `lint` and `build` tasks
 * dump:config - print the build config settings to the console
 * lint - check and report style and usage errors in the gulpfile, source file(s) and test file(s)
 
