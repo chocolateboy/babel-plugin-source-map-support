@@ -1,3 +1,8 @@
+## 2.0.1 - 2018-02-28 16:17:43
+
+* build the release target in production mode
+* doc tweaks
+
 ## 2.0.0 - 2018-02-20 14:44:41
 
 * **breaking change**:
