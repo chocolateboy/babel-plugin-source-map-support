@@ -1,8 +1,13 @@
 # babel-plugin-source-map-support
 
-[![npm status](http://img.shields.io/npm/v/babel-plugin-source-map-support.svg)](https://www.npmjs.org/package/babel-plugin-source-map-support)
-[![build status](https://secure.travis-ci.org/chocolateboy/babel-plugin-source-map-support.svg)](http://travis-ci.org/chocolateboy/babel-plugin-source-map-support)
+[![Build Status](https://secure.travis-ci.org/chocolateboy/babel-plugin-source-map-support.svg)](http://travis-ci.org/chocolateboy/babel-plugin-source-map-support)
+[![NPM Version](http://img.shields.io/npm/v/babel-plugin-source-map-support.svg)](https://www.npmjs.org/package/babel-plugin-source-map-support)
+[![License](https://img.shields.io/badge/license-artistic-blue.svg)](https://github.com/chocolateboy/babel-plugin-source-map-support/blob/master/LICENSE.md)
 
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+
+- [NAME](#name)
 - [INSTALL](#install)
 - [SYNOPSIS](#synopsis)
 - [DESCRIPTION](#description)
@@ -13,7 +18,11 @@
 - [AUTHOR](#author)
 - [COPYRIGHT AND LICENSE](#copyright-and-license)
 
-A Babel plugin which automatically makes stack traces source-map aware
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+
+# NAME
+
+babel-plugin-source-map-support - a Babel plugin which automatically makes stack traces source-map aware
 
 # INSTALL
 
@@ -90,7 +99,6 @@ this plugin.
 
 ## NPM Scripts
 
-
 The following NPM scripts are available:
 
 * test - lint the codebase, compile the plugin, and run the test suite
@@ -123,7 +131,7 @@ The following Gulp tasks are available:
 
 # COPYRIGHT AND LICENSE
 
-Copyright © 2015-2018 by chocolateboy
+Copyright © 2015-2018 by chocolateboy.
 
-This module is free software; you can redistribute it and/or modify it under the
+babel-plugin-source-map-support is free software; you can redistribute it and/or modify it under the
 terms of the [Artistic License 2.0](http://www.opensource.org/licenses/artistic-license-2.0.php).
