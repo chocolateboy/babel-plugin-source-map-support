@@ -132,5 +132,5 @@ The following Gulp tasks are available:
 
 Copyright © 2015-2018 by chocolateboy.
 
-This is free software; you can redistribute it and/or modify it under the
+This module is free software; you can redistribute it and/or modify it under the
 terms of the [Artistic License 2.0](http://www.opensource.org/licenses/artistic-license-2.0.php).
