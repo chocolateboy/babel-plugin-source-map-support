@@ -29,7 +29,7 @@
         "eslint-plugin-node": "^7.0.1",
         "eslint-plugin-promise": "^4.0.0",
         "eslint-plugin-standard": "^4.0.0",
-        "globby": "^6.0.0",
+        "globby": "^8.0.1",
         "gulp": "^4.0.0",
         "gulp-babel": "^8.0.0-beta.1",
         "gulp-changed": "^3.2.0",
