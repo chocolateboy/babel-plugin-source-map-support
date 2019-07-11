@@ -1,5 +1,3 @@
-- babel-plugin-source-map-support
-
 [![Build Status](https://secure.travis-ci.org/chocolateboy/babel-plugin-source-map-support.svg)](http://travis-ci.org/chocolateboy/babel-plugin-source-map-support)
 [![NPM Version](http://img.shields.io/npm/v/babel-plugin-source-map-support.svg)](https://www.npmjs.org/package/babel-plugin-source-map-support)
 
@@ -92,7 +90,7 @@ e.g.:
 ```
 
 Note that source-maps don't need to be inlined in each file. They can be
-externalised by using Babel's `{ sourceMaps: true }` option, which adds a link
+externalised by using the `{ sourceMaps: true }` option, which adds a link
 to the bottom of each file which points to an external source-map e.g.:
 
 ```javascript
@@ -141,7 +139,7 @@ The following NPM scripts are available:
 
 # VERSION
 
-2.0.1
+2.1.0
 
 # AUTHOR
 
@@ -149,7 +147,7 @@ The following NPM scripts are available:
 
 # COPYRIGHT AND LICENSE
 
-Copyright © 2015-2018 by chocolateboy.
+Copyright © 2015-2019 by chocolateboy.
 
 This module is free software; you can redistribute it and/or modify it under the
 terms of the [Artistic License 2.0](http://www.opensource.org/licenses/artistic-license-2.0.php).

@@ -1,4 +1,4 @@
-## 2.1.0 - TBD
+## 2.1.0 - 2019-07-11
 
 - update dependencies (closes #7, #13, #14)
 - drop support for unsupported Node.js versions
