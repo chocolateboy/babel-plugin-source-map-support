@@ -118,12 +118,13 @@ to the bottom of each file which points to an external source-map e.g.:
 The following NPM scripts are available:
 
 - build - compile the plugin and save it to the `dist` directory
+- build:cjs: build the CommonJS target
+- build:esm: build the ESM target
 - clean - remove the `dist` directory and other build artifacts
 - rebuild - clean the build artifacts and recompile the code
-- test - clean, rebuild, and run the test suite
+- test - rebuild the plugin and run the test suite
 - test:debug - run the `test` script in debug mode, which dumps each transformed test case
 - test:prod - run the test suite in production mode
-- test - rebuild the plugin, and run the test suite
 - test:run - run the test suite
 
 </details>

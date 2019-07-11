@@ -7,7 +7,9 @@
     "main": "dist/index.js",
     "module": "dist/index.esm.js",
     "scripts": {
-        "build": "bili --format cjs src/index.js && shx cp src/index.js dist/index.esm.js",
+        "build": "run-s build:cjs build:esm",
+        "build:cjs": "bili --format cjs src/index.js",
+        "build:esm": "shx cp src/index.js dist/index.esm.js",
         "clean": "shx rm -rf dist",
         "prepublishOnly": "run-s test:prod",
         "rebuild": "run-s clean build",
