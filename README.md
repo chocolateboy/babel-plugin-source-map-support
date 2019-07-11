@@ -91,7 +91,7 @@ e.g.:
 
 Note that source-maps don't need to be inlined in each file. They can be
 externalised by using the `{ sourceMaps: true }` option, which adds a link
-to the bottom of each file which points to an external source-map e.g.:
+to the bottom of each file which points to its external source-map e.g.:
 
 ```javascript
 {
@@ -131,12 +131,13 @@ The following NPM scripts are available:
 
 # COMPATIBILITY
 
-* [Maintained Node.js versions](https://github.com/nodejs/Release#readme)
+- Babel >= 7
+- [Maintained Node.js versions](https://github.com/nodejs/Release#readme)
 
 # SEE ALSO
 
-* [babel](https://www.npmjs.com/package/babel)
-* [source-map-support](https://www.npmjs.com/package/source-map-support)
+- [babel](https://www.npmjs.com/package/babel)
+- [source-map-support](https://www.npmjs.com/package/source-map-support)
 
 # VERSION
 
