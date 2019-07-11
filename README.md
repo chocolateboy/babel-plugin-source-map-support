@@ -1,23 +1,23 @@
-# babel-plugin-source-map-support
+- babel-plugin-source-map-support
 
 [![Build Status](https://secure.travis-ci.org/chocolateboy/babel-plugin-source-map-support.svg)](http://travis-ci.org/chocolateboy/babel-plugin-source-map-support)
 [![NPM Version](http://img.shields.io/npm/v/babel-plugin-source-map-support.svg)](https://www.npmjs.org/package/babel-plugin-source-map-support)
 
-<!-- START doctoc generated TOC please keep comment here to allow auto update -->
-<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+<!-- toc -->
 
 - [NAME](#name)
 - [INSTALL](#install)
 - [SYNOPSIS](#synopsis)
 - [DESCRIPTION](#description)
-  - [CAVEATS](#caveats)
 - [DEVELOPMENT](#development)
+  - [NPM Scripts](#npm-scripts)
+- [COMPATIBILITY](#compatibility)
 - [SEE ALSO](#see-also)
 - [VERSION](#version)
 - [AUTHOR](#author)
 - [COPYRIGHT AND LICENSE](#copyright-and-license)
 
-<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+<!-- tocstop -->
 
 # NAME
 
@@ -51,27 +51,32 @@ foo(bar);
 
 # DESCRIPTION
 
-This is a [Babel](https://www.npmjs.com/package/babel) [plugin](https://babeljs.io/docs/advanced/plugins/)
-which prepends the following statement to source files:
+This is a [Babel](https://www.npmjs.com/package/babel)
+[plugin](https://babeljs.io/docs/advanced/plugins/) which prepends the
+following statement to source files:
 
 ```javascript
 import 'source-map-support/register';
 ```
 
-In conjunction with the [source-map-support](https://www.npmjs.com/package/source-map-support)
-module, **which must be installed separately**, this statement hooks into the v8 stack-trace API to
-translate call sites in the transpiled code back to their corresponding locations in
-the original code.
+In conjunction with the
+[source-map-support](https://www.npmjs.com/package/source-map-support) module,
+**which must be installed separately**, this statement hooks into the v8
+stack-trace API to translate call sites in the transpiled code back to their
+corresponding locations in the original code.
 
-Note: this only works in environments which support the v8 stack-trace API (e.g. Node.js and Chrome),
-though it's harmless in other environments.
+Note: this only works in environments which support the v8 stack-trace API
+(e.g. Node.js and Chrome), though it's harmless in other environments.
 
-The source-map-support module only needs to be registered in the top-level file(s) of an application,
-but it no-ops if it has already been loaded, so there is no harm in registering it in every file.
+The source-map-support module only needs to be registered in the top-level
+file(s) of an application, but it no-ops if it has already been loaded, so
+there is no harm in registering it in every file.
 
-You probably don't want to use this plugin when compiling code for the web because you probably don't
-want to include inline source maps in minified code. An easy way to limit the plugin's scope to
-development/test builds is to use Babel's [`env` option](https://babeljs.io/docs/usage/babelrc/#env-option) e.g.:
+You probably don't want to use this plugin when compiling code for the web
+because you probably don't want to bundle source-maps and the source-map module
+in minified code. An easy way to limit the plugin's scope to development/test
+builds is to use Babel's [`env` option](https://babeljs.io/docs/usage/babelrc/#env-option)
+e.g.:
 
 ```javascript
 {
@@ -86,11 +91,25 @@ development/test builds is to use Babel's [`env` option](https://babeljs.io/docs
 }
 ```
 
-## CAVEATS
+Note that source-maps don't need to be inlined in each file. They can be
+externalised by using Babel's `{ sourceMaps: true }` option, which adds a link
+to the bottom of each file which points to an external source-map e.g.:
 
-Source maps must currently be inline. While the source-map-support module provides a way
-to associate a file with an external source map, that is not currently supported by
-this plugin.
+```javascript
+{
+    env: {
+        development: {
+            sourceMaps: true,
+            plugins: ['source-map-support', ...]
+        }
+    },
+}
+```
+
+```javascript
+// index.js footer:
+//# sourceMappingURL=index.js.map
+```
 
 # DEVELOPMENT
 
@@ -100,20 +119,20 @@ this plugin.
 
 The following NPM scripts are available:
 
-* test - lint the codebase, compile the plugin, and run the test suite
-* test:debug - run the `test` script in debug mode, which dumps each transformed test case
-
-## Gulp Tasks
-
-The following Gulp tasks are available:
-
-* build - compile the plugin and save it to the target directory
-* clean - remove the target directory and its contents
-* default - run the `lint` and `build` tasks
-* dump:config - print the build config settings to the console
-* lint - check and report style and usage errors in the gulpfile, source file(s) and test file(s)
+- build - compile the plugin and save it to the `dist` directory
+- clean - remove the `dist` directory and other build artifacts
+- rebuild - clean the build artifacts and recompile the code
+- test - clean, rebuild, and run the test suite
+- test:debug - run the `test` script in debug mode, which dumps each transformed test case
+- test:prod - run the test suite in production mode
+- test - rebuild the plugin, and run the test suite
+- test:run - run the test suite
 
 </details>
+
+# COMPATIBILITY
+
+* [Maintained Node.js versions](https://github.com/nodejs/Release#readme)
 
 # SEE ALSO
 

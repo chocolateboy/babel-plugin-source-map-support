@@ -5,37 +5,38 @@
     "repository": "chocolateboy/babel-plugin-source-map-support",
     "license": "Artistic-2.0",
     "main": "dist/index.js",
-    "files": [
-        "dist/index.js"
-    ],
+    "module": "dist/index.esm.js",
     "scripts": {
-        "prepublishOnly": "gulp clean && cross-env NODE_ENV=production npm run test",
-        "test:debug": "cross-env NODE_ENV=development npm run test",
-        "test": "gulp && ava --verbose ./test"
+        "build": "bili --format cjs src/index.js && shx cp src/index.js dist/index.esm.js",
+        "clean": "shx rm -rf dist",
+        "prepublishOnly": "run-s test:prod",
+        "rebuild": "run-s clean build",
+        "test": "run-s rebuild test:run",
+        "test:debug": "cross-env NODE_ENV=development run-s test",
+        "test:prod": "cross-env NODE_ENV=production run-s test",
+        "test:run": "ava --verbose"
     },
+    "files": [
+        "dist/"
+    ],
+    "ava": {
+        "files": [
+            "test/*.js"
+        ]
+    },
+    "browserslist": "maintained node versions",
     "dependencies": {
-        "@babel/core": "^7.0.0",
         "@babel/helper-module-imports": "^7.0.0"
     },
     "devDependencies": {
-        "@babel/preset-env": "^7.0.0",
-        "ava": "^0.25.0",
-        "babel-eslint": "^9.0.0",
-        "cross-env": "^5.0.1",
-        "del": "^3.0.0",
-        "eslint": "^5.5.0",
-        "eslint-config-standard": "^12.0.0",
-        "eslint-plugin-import": "^2.7.0",
-        "eslint-plugin-node": "^7.0.1",
-        "eslint-plugin-promise": "^4.0.0",
-        "eslint-plugin-standard": "^4.0.0",
-        "globby": "^6.0.0",
-        "gulp": "^4.0.0",
-        "gulp-babel": "^8.0.0-beta.1",
-        "gulp-changed": "^3.2.0",
-        "gulp-eslint": "^5.0.0",
-        "lodash": "^4.17.5",
-        "root-path": "^0.2.1"
+        "@babel/core": "^7.5.4",
+        "ava": "^2.2.0",
+        "bili": "^4.8.0",
+        "cross-env": "^5.2.0",
+        "npm-run-all": "^4.1.5",
+        "prettier": "^1.18.2",
+        "shx": "^0.3.2",
+        "source-map-support": "^0.5.12"
     },
     "keywords": [
         "babel-plugin",
@@ -45,8 +46,6 @@
         "sourcemaps",
         "stack-trace",
         "stacktrace",
-        "stack-traces",
-        "stacktraces",
         "v8"
     ]
 }

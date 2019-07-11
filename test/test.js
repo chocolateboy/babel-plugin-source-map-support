@@ -1,31 +1,46 @@
-import test                  from 'ava'
-import { transformFileSync } from 'babel-core'
-import Fs                    from 'fs'
-import glob                  from 'globby'
-import Path                  from 'path'
-import root                  from 'root-path'
+import test               from 'ava'
+import Fs                 from 'fs'
+import Path               from 'path'
+import Prettier           from 'prettier'
+import { promisify }      from 'util'
+import { transformAsync } from '@babel/core'
 
 const isDev = process.env.NODE_ENV === 'development'
-const pluginPath = root('dist/index.js')
-const testDirs = glob.sync(root('test/fixtures/*/'))
+const fixtures = Path.join(__dirname, 'fixtures')
+const pluginPath = Path.resolve(__dirname, '..')
 
-for (const testDir of testDirs) {
-    const inputPath = Path.resolve(testDir, 'input.js')
-    const outputPath = Path.resolve(testDir, 'output.js')
-    const testName = Path.basename(testDir)
+// TODO use fs.promises.readFile when node v8 is EOL
+const readFileAsync = promisify(Fs.readFile)
 
-    test(testName, t => {
-        const { code: got } = transformFileSync(inputPath, {
+function normalize (html) {
+    return Prettier.format(html.trim(), { parser: 'babel' })
+}
+
+for (const name of Fs.readdirSync(fixtures)) {
+    const inputPath = Path.resolve(fixtures, name, 'input.js')
+    const outputPath = Path.resolve(fixtures, name, 'output.js')
+
+    test(name, async t => {
+        const input = await readFileAsync(inputPath, 'utf8')
+
+        const { code } = await transformAsync(input, {
             plugins: [pluginPath],
             babelrc: false,
         })
 
+        const got = normalize(code)
+        const want = normalize(await readFileAsync(outputPath, 'utf8'))
+
         if (isDev) {
-            console.warn('%s:\n<<%s>>', testName, got)
+            console.warn(`\n/******************* ${name} *******************/\n`)
+            console.warn(`given:\n\n${input}`)
+            console.warn(`\n-------------------------------------------------\n`)
+            console.warn(`got:\n\n${got}`)
+            console.warn(`\n-------------------------------------------------\n`)
+            console.warn(`want:\n\n${want}`)
+            console.warn(`\n-------------------------------------------------\n`)
         }
 
-        const want = Fs.readFileSync(outputPath, 'utf8')
-
-        t.is(got.trim(), want.trim())
+        t.is(got, want)
     })
 }
