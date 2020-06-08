@@ -1,16 +1,13 @@
-import test               from 'ava'
-import Fs                 from 'fs'
-import Path               from 'path'
-import Prettier           from 'prettier'
-import { promisify }      from 'util'
-import { transformAsync } from '@babel/core'
+const test               = require('ava')
+const Fs                 = require('fs')
+const Path               = require('path')
+const Prettier           = require('prettier')
+const { promisify }      = require('util')
+const { transformAsync } = require('@babel/core')
 
 const isDev = process.env.NODE_ENV === 'development'
 const fixtures = Path.join(__dirname, 'fixtures')
 const pluginPath = Path.resolve(__dirname, '..')
-
-// TODO use fs.promises.readFile when node v8 is EOL
-const readFileAsync = promisify(Fs.readFile)
 
 function normalize (html) {
     return Prettier.format(html.trim(), { parser: 'babel' })
@@ -21,7 +18,7 @@ for (const name of Fs.readdirSync(fixtures)) {
     const outputPath = Path.resolve(fixtures, name, 'output.js')
 
     test(name, async t => {
-        const input = await readFileAsync(inputPath, 'utf8')
+        const input = await Fs.promises.readFile(inputPath, 'utf8')
 
         const { code } = await transformAsync(input, {
             plugins: [pluginPath],
@@ -29,7 +26,7 @@ for (const name of Fs.readdirSync(fixtures)) {
         })
 
         const got = normalize(code)
-        const want = normalize(await readFileAsync(outputPath, 'utf8'))
+        const want = normalize(await Fs.promises.readFile(outputPath, 'utf8'))
 
         if (isDev) {
             console.warn(`\n/******************* ${name} *******************/\n`)

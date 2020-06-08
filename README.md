@@ -1,5 +1,5 @@
-[![Build Status](https://secure.travis-ci.org/chocolateboy/babel-plugin-source-map-support.svg)](http://travis-ci.org/chocolateboy/babel-plugin-source-map-support)
-[![NPM Version](http://img.shields.io/npm/v/babel-plugin-source-map-support.svg)](https://www.npmjs.org/package/babel-plugin-source-map-support)
+[![Build Status](https://travis-ci.org/chocolateboy/babel-plugin-source-map-support.svg)](https://travis-ci.org/chocolateboy/babel-plugin-source-map-support)
+[![NPM Version](https://img.shields.io/npm/v/babel-plugin-source-map-support.svg)](https://www.npmjs.org/package/babel-plugin-source-map-support)
 
 <!-- toc -->
 
@@ -71,10 +71,10 @@ file(s) of an application, but it no-ops if it has already been loaded, so
 there is no harm in registering it in every file.
 
 You probably don't want to use this plugin when compiling code for the web
-because you probably don't want to bundle source-maps and the source-map module
-in minified code. An easy way to limit the plugin's scope to development/test
-builds is to use Babel's [`env` option](https://babeljs.io/docs/usage/babelrc/#env-option)
-e.g.:
+because you probably don't want to bundle source-maps and the
+source-map-support module in minified code. An easy way to limit the plugin's
+scope to development/test builds is to use Babel's
+[`env` option](https://babeljs.io/docs/usage/babelrc/#env-option), e.g.:
 
 ```javascript
 {
@@ -90,8 +90,8 @@ e.g.:
 ```
 
 Note that source-maps don't need to be inlined in each file. They can be
-externalised by using the `{ sourceMaps: true }` option, which adds a link
-to the bottom of each file which points to its external source-map e.g.:
+externalised by using the `{ sourceMaps: true }` option. This adds a link to
+the bottom of each file pointing to its generated source-map, e.g.:
 
 ```javascript
 {
@@ -118,8 +118,8 @@ to the bottom of each file which points to its external source-map e.g.:
 The following NPM scripts are available:
 
 - build - compile the plugin and save it to the `dist` directory
-- build:cjs: build the CommonJS target
-- build:esm: build the ESM target
+- build:cjs - build the CommonJS target
+- build:esm - build the ESM target
 - clean - remove the `dist` directory and other build artifacts
 - rebuild - clean the build artifacts and recompile the code
 - test - rebuild the plugin and run the test suite
@@ -149,7 +149,7 @@ The following NPM scripts are available:
 
 # COPYRIGHT AND LICENSE
 
-Copyright © 2015-2019 by chocolateboy.
+Copyright © 2015-2020 by chocolateboy.
 
 This module is free software; you can redistribute it and/or modify it under the
-terms of the [Artistic License 2.0](http://www.opensource.org/licenses/artistic-license-2.0.php).
+terms of the [Artistic License 2.0](https://www.opensource.org/licenses/artistic-license-2.0.php).
