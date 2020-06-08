@@ -1,3 +1,7 @@
+## 2.1.2 - 2020-06-09
+
+- bump dependencies
+
 ## 2.1.1 - 2019-07-11
 
 - document the supported Babel version
@@ -8,12 +12,12 @@
 - drop support for unsupported Node.js versions
 - clarify the use of external source-maps
 - build clean-up
-- doc tweaks
+- documentation tweaks
 
 ## 2.0.1 - 2018-02-28
 
 - build the release target in production mode
-- doc tweaks
+- documentation tweaks
 
 ## 2.0.0 - 2018-02-20
 
