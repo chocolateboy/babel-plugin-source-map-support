@@ -91,7 +91,7 @@ scope to development/test builds is to use Babel's
 
 Note that source-maps don't need to be inlined in each file. They can be
 externalised by using the `{ sourceMaps: true }` option. This adds a link to
-the bottom of each file pointing to its generated source-map, e.g.:
+the bottom of each file which points to its generated source-map, e.g.:
 
 ```javascript
 {
