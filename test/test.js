@@ -2,7 +2,6 @@ const test               = require('ava')
 const Fs                 = require('fs')
 const Path               = require('path')
 const Prettier           = require('prettier')
-const { promisify }      = require('util')
 const { transformAsync } = require('@babel/core')
 
 const isDev = process.env.NODE_ENV === 'development'

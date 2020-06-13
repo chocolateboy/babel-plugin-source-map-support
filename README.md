@@ -68,7 +68,7 @@ Note: this only works in environments which support the v8 stack-trace API
 
 The source-map-support module only needs to be registered in the top-level
 file(s) of an application, but it no-ops if it has already been loaded, so
-there is no harm in registering it in every file.
+there's no harm in registering it in every file.
 
 You probably don't want to use this plugin when compiling code for the web
 because you probably don't want to bundle source-maps and the
