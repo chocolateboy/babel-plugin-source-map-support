@@ -136,7 +136,7 @@ The following NPM scripts are available:
 
 # SEE ALSO
 
-- [babel](https://www.npmjs.com/package/babel)
+- [babel](https://babeljs.io/)
 - [source-map-support](https://www.npmjs.com/package/source-map-support)
 
 # VERSION
