@@ -1,3 +1,8 @@
+## 2.1.3 - TBD
+
+- bump dependencies
+- documentation tweaks
+
 ## 2.1.2 - 2020-06-09
 
 - bump dependencies
@@ -8,7 +13,10 @@
 
 ## 2.1.0 - 2019-07-11
 
-- update dependencies (closes #7, #13, #14)
+- update dependencies (closes
+  [#7](https://github.com/chocolateboy/babel-plugin-source-map-support/issues/7),
+  [#13](https://github.com/chocolateboy/babel-plugin-source-map-support/pull/13),
+  [#14](https://github.com/chocolateboy/babel-plugin-source-map-support/pull/14))
 - drop support for unsupported Node.js versions
 - clarify the use of external source-maps
 - build clean-up
@@ -21,15 +29,20 @@
 
 ## 2.0.0 - 2018-02-20
 
-- **breaking change**:
-  - add support for Babel >= 7.x
-  - remove support for Babel 6.x
+#### Breaking Changes
+
+- add support for Babel >= 7.x
+- drop support for Babel 6.x
 
 ## 1.0.0 - 2017-07-27
 
-- **breaking change**:
-  - add support for Babel >= 6.x (thanks, gajus and mariodu)
-  - remove support for Babel 5.x
+#### Breaking Changes
+
+- add support for Babel >= 6.x (thanks, gajus and mariodu)
+- drop support for Babel 5.x
+
+#### Changes
+
 - build: migrate from Grunt to Gulp
 - test:
   - migrate from Mocha to AVA

@@ -24,15 +24,15 @@
     ],
     "browserslist": "maintained node versions",
     "dependencies": {
-        "@babel/helper-module-imports": "^7.10.1"
+        "@babel/helper-module-imports": "^7.10.4"
     },
     "devDependencies": {
-        "@babel/core": "^7.10.2",
-        "ava": "^3.8.2",
-        "bili": "^4.10.1",
+        "@babel/core": "^7.11.4",
+        "ava": "^3.12.1",
+        "bili": "^5.0.5",
         "cross-env": "^7.0.2",
         "npm-run-all": "^4.1.5",
-        "prettier": "^2.0.5",
+        "prettier": "^2.1.1",
         "shx": "^0.3.2",
         "source-map-support": "^0.5.19"
     },
