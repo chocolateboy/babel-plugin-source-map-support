@@ -74,7 +74,7 @@ You probably don't want to use this plugin when compiling code for the web
 because you probably don't want to bundle source-maps and the
 source-map-support module in minified code. An easy way to limit the plugin's
 scope to development/test builds is to use Babel's
-[`env` option](https://babeljs.io/docs/usage/babelrc/#env-option), e.g.:
+[`env` option](https://babeljs.io/docs/en/options#env), e.g.:
 
 ```javascript
 {
