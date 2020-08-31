@@ -1,4 +1,4 @@
-## 2.1.3 - TBD
+## 2.1.3 - 2020-08-31
 
 - bump dependencies
 - documentation tweaks
