@@ -49,7 +49,7 @@ foo(bar);
 
 # DESCRIPTION
 
-This is a [Babel](https://www.npmjs.com/package/babel)
+This is a [Babel](https://babeljs.io/)
 [plugin](https://babeljs.io/docs/advanced/plugins/) which prepends the
 following statement to source files:
 
