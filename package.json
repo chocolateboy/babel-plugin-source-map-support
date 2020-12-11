@@ -7,11 +7,10 @@
     "main": "dist/index.js",
     "module": "dist/index.esm.js",
     "scripts": {
-        "build": "run-s build:cjs build:esm",
-        "build:cjs": "bili --format cjs src/index.js",
-        "build:esm": "shx cp src/index.js dist/index.esm.js",
+        "build": "bili --format cjs,esm src/index.js",
+        "build:doc": "toc-md README.md",
         "clean": "shx rm -rf dist",
-        "prepublishOnly": "run-s test:prod",
+        "prepublishOnly": "run-p build:doc test:prod",
         "rebuild": "run-s clean build",
         "test": "run-s rebuild test:run",
         "test:debug": "cross-env NODE_ENV=development run-s test",
@@ -24,17 +23,18 @@
     ],
     "browserslist": "maintained node versions",
     "dependencies": {
-        "@babel/helper-module-imports": "^7.10.4"
+        "@babel/helper-module-imports": "^7.12.5"
     },
     "devDependencies": {
-        "@babel/core": "^7.11.4",
-        "ava": "^3.12.1",
+        "@babel/core": "^7.12.10",
+        "ava": "^3.14.0",
         "bili": "^5.0.5",
-        "cross-env": "^7.0.2",
+        "cross-env": "^7.0.3",
         "npm-run-all": "^4.1.5",
-        "prettier": "^2.1.1",
-        "shx": "^0.3.2",
-        "source-map-support": "^0.5.19"
+        "prettier": "^2.2.1",
+        "shx": "^0.3.3",
+        "source-map-support": "^0.5.19",
+        "toc-md-alt": "^0.4.1"
     },
     "keywords": [
         "babel-plugin",

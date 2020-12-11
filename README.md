@@ -1,7 +1,7 @@
 [![Build Status](https://github.com/chocolateboy/babel-plugin-source-map-support/workflows/test/badge.svg)](https://github.com/chocolateboy/babel-plugin-source-map-support/actions?query=workflow%3Atest)
 [![NPM Version](https://img.shields.io/npm/v/babel-plugin-source-map-support.svg)](https://www.npmjs.org/package/babel-plugin-source-map-support)
 
-<!-- toc -->
+<!-- TOC -->
 
 - [NAME](#name)
 - [INSTALL](#install)
@@ -15,7 +15,7 @@
 - [AUTHOR](#author)
 - [COPYRIGHT AND LICENSE](#copyright-and-license)
 
-<!-- tocstop -->
+<!-- TOC END -->
 
 # NAME
 
@@ -118,8 +118,7 @@ the bottom of each file which points to its generated source-map, e.g.:
 The following NPM scripts are available:
 
 - build - compile the plugin and save it to the `dist` directory
-- build:cjs - build the CommonJS target
-- build:esm - build the ESM target
+- build:doc - generate the README's TOC (table of contents)
 - clean - remove the `dist` directory and other build artifacts
 - rebuild - clean the build artifacts and recompile the code
 - test - rebuild the plugin and run the test suite
