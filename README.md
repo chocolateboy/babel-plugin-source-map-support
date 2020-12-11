@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/chocolateboy/babel-plugin-source-map-support.svg)](https://travis-ci.org/chocolateboy/babel-plugin-source-map-support)
+[![Build Status](https://github.com/chocolateboy/babel-plugin-source-map-support/workflows/test/badge.svg)](https://github.com/chocolateboy/babel-plugin-source-map-support/actions?query=workflow%3Atest)
 [![NPM Version](https://img.shields.io/npm/v/babel-plugin-source-map-support.svg)](https://www.npmjs.org/package/babel-plugin-source-map-support)
 
 <!-- toc -->
