@@ -1,3 +1,7 @@
+## 2.1.4 - TBC
+
+- bump dependencies
+
 ## 2.1.3 - 2020-08-31
 
 - bump dependencies
