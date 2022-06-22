@@ -1,6 +1,7 @@
-## 2.1.4 - TBC
+## 2.2.0 - TBC
 
 - bump dependencies
+- build: migrate from bili -> rollup
 
 ## 2.1.3 - 2020-08-31
 
