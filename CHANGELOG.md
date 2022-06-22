@@ -1,4 +1,4 @@
-## 2.2.0 - TBC
+## 2.2.0 - 2022-06-22
 
 - bump dependencies
 - build: migrate from bili -> rollup

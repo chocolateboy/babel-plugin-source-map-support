@@ -140,7 +140,7 @@ The following NPM scripts are available:
 
 # VERSION
 
-2.1.3
+2.2.0
 
 # AUTHOR
 
@@ -148,7 +148,7 @@ The following NPM scripts are available:
 
 # COPYRIGHT AND LICENSE
 
-Copyright © 2015-2020 by chocolateboy.
+Copyright © 2015-2022 by chocolateboy.
 
 This module is free software; you can redistribute it and/or modify it under the
 terms of the [Artistic License 2.0](https://www.opensource.org/licenses/artistic-license-2.0.php).
