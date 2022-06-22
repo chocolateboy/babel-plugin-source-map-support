@@ -8,8 +8,8 @@ const isDev = process.env.NODE_ENV === 'development'
 const fixtures = Path.join(__dirname, 'fixtures')
 const pluginPath = Path.resolve(__dirname, '..')
 
-function normalize (html) {
-    return Prettier.format(html.trim(), { parser: 'babel' })
+function normalize (code) {
+    return Prettier.format(code.trim(), { parser: 'babel' })
 }
 
 for (const name of Fs.readdirSync(fixtures)) {
